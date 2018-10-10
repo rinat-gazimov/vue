@@ -97,7 +97,9 @@
 
             getAnswers: function (storage) {
 
-                if (this.intitle == null || this.intitle.replace(' ', '') == '') {
+                this.intitle = this.intitle.replace(' ', '');
+
+                if (this.intitle == null || this.intitle == '') {
                     Common.showToast('error', 'Error', 'Query parameter is empty');
                     return;
                 }
