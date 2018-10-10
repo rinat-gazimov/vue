@@ -97,21 +97,25 @@
 
             getAnswers: function (storage) {
 
-                this.intitle = this.intitle.replace(' ', '');
+                if (this.intitle != null) {
+                    this.intitle = this.intitle.replace(' ', '');
 
-                if (this.intitle == null || this.intitle == '') {
-                    Common.showToast('error', 'Error', 'Query parameter is empty');
-                    return;
-                }
-
-                answers.getAnswers(this.intitle, function (d) {
-                    storage.responses.splice(0, storage.responses.length);
-                    for (let i = 0; i < d.responses.length; i++) {
-                        let e = d.responses[i];
-                        storage.responses.push(e);
+                    if (this.intitle == '') {
+                        Common.showToast('error', 'Error', 'Query parameter is empty');
+                        return;
                     }
 
-                });
+                    answers.getAnswers(this.intitle, function (d) {
+                        storage.responses.splice(0, storage.responses.length);
+                        for (let i = 0; i < d.responses.length; i++) {
+                            let e = d.responses[i];
+                            storage.responses.push(e);
+                        }
+
+                    });
+                } else {
+                    Common.showToast('error', 'Error', 'Query parameter is empty');
+                }
 
             }
 
