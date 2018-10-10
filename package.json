@@ -1,0 +1,32 @@
+{
+  "name": "ckpt-back",
+  "description": "KAMAZ Checkpoint System",
+  "author": "Grace Logic",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "predeploy": "npm run build",
+    "deploy": "surge --project . --domain vue-2-simple-routing-example.surge.sh"
+  },
+  "dependencies": {
+    "imports-loader": "^0.7.1",
+    "vue": "^2.3.4",
+    "vue-router": "^2.6.0",
+    "vue-template-compiler": "^2.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "cross-env": "^1.0.6",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.4",
+    "surge": "^0.18.0",
+    "vue-loader": "^12.2.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0",
+    "style-loader": "^0.13.0",
+    "jquery": "^1.12.1"
+  }
+}
