@@ -9,24 +9,6 @@
                     <div class="col-md-12">
 
                         <div class="portlet light ">
-                            <div class="portlet-title">
-                                <!--<div class="caption">-->
-                                <!--<i class="icon-social-dribbble font-green"></i>-->
-                                <!--<span class="caption-subject font-green bold uppercase">Table</span>-->
-                                <!--</div>-->
-                                <!--<div class="actions">-->
-                                <!--<a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">-->
-                                <!--<i class="icon-cloud-upload"></i>-->
-                                <!--</a>-->
-                                <!--<a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">-->
-                                <!--<i class="icon-wrench"></i>-->
-                                <!--</a>-->
-                                <!--<a class="btn btn-circle btn-icon-only btn-default" href="javascript:;">-->
-                                <!--<i class="icon-trash"></i>-->
-                                <!--</a>-->
-                                <!--</div>-->
-                            </div>
-
 
                             <div class="portlet-body">
 
@@ -98,15 +80,21 @@
             getAnswers: function (storage) {
 
                 if (this.intitle != null) {
-                    this.intitle = this.intitle.replace(' ', '');
+                    this.intitle = this.intitle.trim();
 
                     if (this.intitle == '') {
                         Common.showToast('error', 'Error', 'Query parameter is empty');
                         return;
                     }
 
+                    storage.responses.splice(0, storage.responses.length);
+
                     answers.getAnswers(this.intitle, function (d) {
-                        storage.responses.splice(0, storage.responses.length);
+                        if (d == null || d.responses.length == 0) {
+                            Common.showToast('error', 'Error', 'There are no answers for request');
+                            return;
+                        }
+
                         for (let i = 0; i < d.responses.length; i++) {
                             let e = d.responses[i];
                             storage.responses.push(e);

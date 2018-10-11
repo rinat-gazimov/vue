@@ -8,7 +8,6 @@ export default {
             type: 'GET',
             dataType: "json",
             async: true,
-            // contentType: 'application/json',
             success: function (data, textStatus) {
                 if (successCallback != null) {
                     successCallback(data);
